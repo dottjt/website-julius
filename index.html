@@ -41,8 +41,9 @@
   </head>
   <body>
     <div class="container">
+      <div class="top_description"></div>
       <div class="name"></div>
-      <div class="description"></div>
+      <div class="name_description">linkedIn.</div>
      <div class="main"></div>
      </div>
 
@@ -50,7 +51,7 @@
       body {opacity:0;}
 
       .container {
-        border: 1px solid black;
+        border: 4px solid black;
         position: absolute;
         top: 0.5rem;
         bottom: 0.5rem;
@@ -77,15 +78,34 @@
 
         font-size: 3rem;
       }
+      .name_description {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 4rem;
+        bottom: 0rem;
+        right: 0rem;
+        left: 0rem;
+      }
+      .top_description {
+        position: absolute;
+        background: white;
+        padding: 0.5rem;
+        border-bottom: 4px solid black;
+        border-right: 4px solid black;
+      }
 
     </style>
     <script>
       window.onload = function() {setTimeout(function(){document.body.style.opacity="100";},200);}
-      let websiteText = "website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website";
-
+      // let websiteText = "website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website";
+      let websiteText = "julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius";
       const main = document.querySelector(".main");
       const container = document.querySelector(".container")
       const name = document.querySelector(".name")
+      const name_description = document.querySelector(".name_description")
+      const top_description = document.querySelector(".top_description")
 
       let calculateBackground = () => {
         main.innerHTML = "";
@@ -100,6 +120,8 @@
 
       calculateBackground()
       name.textContent = "Julius Reade"
+      top_description.textContent = "Melbourne. Software Engineer."
+      name_description.textContent = "We seem to be stuck in a predicament here."
 
       document.addEventListener("mousemove", (event) => {
         calculateBackground()
