@@ -91,9 +91,11 @@
       }
       .top_description {
         position: absolute;
+        bottom: 0;
+
         background: white;
         padding: 0.5rem;
-        border-bottom: 4px solid black;
+        border-top: 4px solid black;
         width: 100%;
       }
 
@@ -106,20 +108,27 @@
     </style>
     <script>
       window.onload = function() {setTimeout(function(){document.body.style.opacity="100";},200);}
-      // let websiteText = "website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website website";
-      let websiteText = "julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius";
+      const websiteText = "julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius";
       const main = document.querySelector(".main");
       const container = document.querySelector(".container")
       const name = document.querySelector(".name")
       const name_description = document.querySelector(".name_description")
       const top_description = document.querySelector(".top_description")
 
+
+      function randomIntFromInterval(min, max) { // min and max included
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      let angle = 0;
+
       const calculateBackground = () => {
         main.innerHTML = "";
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < randomIntFromInterval(60, 80); i++) {
           const elemDiv = document.createElement('div');
           const randomNumber = 0.8 * Math.random()
           elemDiv.style.fontSize = String(randomNumber) + "rem";
+          elemDiv.style.transform = `rotate(${angle + (i *1.5)}deg)`
+          // angle += 1;
           elemDiv.textContent = websiteText;
           main.appendChild(elemDiv);
         }
@@ -128,26 +137,26 @@
       calculateBackground()
       name.textContent = "Julius Reade"
       top_description.textContent = "Software Engineer. Music Producer. Melbourne, Australia."
-      name_description.textContent = "It seems we're in quite the predicament here. Oh, well."
+      name_description.textContent = "It seems like we're in quite the predicament. Oh, well."
 
-      const mediaQuery = window.matchMedia('(min-width: 500px)');
+      // const mediaQuery = window.matchMedia('(min-width: 500px)');
 
-      const mediaListener = (event) => {
-        if (event.matches) {
-          document.addEventListener("mousemove", (event) => {
-            calculateBackground()
-          });
-        } else {
+      // const mediaListener = (event) => {
+      //   if (event.matches) {
+      //     document.addEventListener("mousemove", (event) => {
+      //       calculateBackground()
+      //     });
+      //   } else {
           // this code is super crap because once you go to mobile view and then come back the set interval time will keep going.
           // but it really shouldn't be an issue in most cases
           window.setInterval(() => {
             calculateBackground()
           }, "200")
-        }
-      }
+      //   }
+      // }
 
-      mediaQuery.addListener(mediaListener)
-      mediaListener(mediaQuery)
+      // mediaQuery.addListener(mediaListener)
+      // mediaListener(mediaQuery)
     </script>
   </body>
 </html>
