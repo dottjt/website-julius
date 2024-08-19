@@ -108,7 +108,9 @@
     </style>
     <script>
       window.onload = function() {setTimeout(function(){document.body.style.opacity="100";},200);}
-      const websiteText = "julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius";
+      const juliusText = "julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius";
+      const juliusNameText = "julius ";
+
       const main = document.querySelector(".main");
       const container = document.querySelector(".container")
       const name = document.querySelector(".name")
@@ -123,13 +125,13 @@
 
       const calculateBackground = () => {
         main.innerHTML = "";
-        for (let i = 0; i < randomIntFromInterval(100, 120); i++) {
+        for (let i = 0; i < randomIntFromInterval(80, 100); i++) {
           const elemDiv = document.createElement('div');
           const randomNumber = 0.8 * Math.random()
           elemDiv.style.fontSize = String(randomNumber) + "rem";
           elemDiv.style.transform = `rotate(${angle + (i * 1.2)}deg)`
-          // angle += 1;
-          elemDiv.textContent = websiteText;
+          elemDiv.textContent = juliusText;
+
           main.appendChild(elemDiv);
         }
       }
