@@ -181,13 +181,14 @@
         for (let i = 0; i < sentenceLength; i++) {
           var item = wordsArray[Math.floor(Math.random()*wordsArray.length)];
           words += (item + " ");
+
           // just some random optimisations to get it to run a little better
-          if (fontSize > 0.6 && words.length > 400) {
-            return words;
-          }
-          if (calculatedAngle > 60 && words.length > 300) {
-            return words
-          }
+          // if (fontSize > 0.6 && words.length > 400) {
+          //   return words;
+          // }
+          // if (calculatedAngle > 60 && words.length > 300) {
+          //   return words
+          // }
         }
         return words;
       }
