@@ -7,19 +7,19 @@
     <link rel="preload" as="image" href="https://media4.giphy.com/media/6p26sp0YT2LAI/giphy.gif" />
 
     <title>Julius Reade</title>
-    <meta name="description" content="Julius Reade. Melbourne, Australia.">
-    <meta name="keywords" content="Julius Reade, HTML, CSS, JavaScript, Node.js, Melbourne">
+    <meta name="description" content="Julius Reade. Senior Software Engineer. Melbourne, Australia.">
+    <meta name="keywords" content="Julius Reade, HTML, CSS, JavaScript, TypeScript, Node.js, C#, .NET,  Melbourne">
     <meta name="author" content="Julius Reade">
 
     <meta property="og:title" content="Julius Reade" />
-    <meta property="og:description" content="Software Engineer." />
+    <meta property="og:description" content="Julius Reade. Senior Software Engineer. Melbourne, Australia." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://juliusreade.com/" />
     <meta property="og:updated_time" content="2023-02-12T05:43:32+10:00" />
     <meta itemprop="name" content="Julius Reade">
-    <meta itemprop="description" content="Software Engineer."><meta name="twitter:card" content="summary"/>
+    <meta itemprop="description" content="Julius Reade. Senior Software Engineer. Melbourne, Australia."><meta name="twitter:card" content="summary"/>
     <meta name="twitter:title" content="Julius Reade"/>
-    <meta name="twitter:description" content="Software Engineer."/>
+    <meta name="twitter:description" content="Julius Reade. Senior Software Engineer. Melbourne, Australia."/>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
@@ -78,6 +78,7 @@
         align-items: center;
 
         font-size: 3rem;
+        z-index: 100;
       }
       .name_description {
         display: flex;
@@ -88,6 +89,7 @@
         bottom: 0rem;
         right: 0rem;
         left: 0rem;
+        z-index: 100;
       }
       .top_description {
         position: absolute;
@@ -108,8 +110,35 @@
     </style>
     <script>
       window.onload = function() {setTimeout(function(){document.body.style.opacity="100";},200);}
+      // 266 words long
       const juliusText = "julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius julius";
-      const juliusNameText = "julius ";
+
+      const technologiesArray = [
+        "ASP.NET", "Azure", ".NET", "C#",
+        "React Native", "Android", "Java", "Kotlin", "Gradle",
+        "React.js", "HTML", "SASS", "CSS",
+        "Github", "Next.js", "Buildkite", "Node.js",
+        "PostgreSQL", "MySQL", "",
+        "JavaScript", "TypeScript", "Express.js", "npm",
+        "Docker", "Kubernetes",
+        "Sumo Logic", "AWS", "Datadog", "Jira", "Confluence", "Terraform",
+        "Apollo", "GraphQL",
+        // "Meteor.js",
+      ]
+
+      const companiesArray = [
+        // "FMClarity",
+        // "MYOB",
+        // "Coles",
+        // "Afterpay",
+      ]
+
+      const wordsArray = [
+        // "julius",
+      ]
+        .concat(technologiesArray)
+        .concat(companiesArray)
+        // .map(item => item.toLowerCase())
 
       const main = document.querySelector(".main");
       const container = document.querySelector(".container")
@@ -117,11 +146,24 @@
       const name_description = document.querySelector(".name_description")
       const top_description = document.querySelector(".top_description")
 
+      function createSentence() {
+        let words = ""
+        // for julius use 250
+        for (let i = 0; i < 250; i++) {
+          var item = wordsArray[Math.floor(Math.random()*wordsArray.length)];
+          words += (item + " ");
+          // words += "$$$$$";
+        }
+        return words;
+      }
 
       function randomIntFromInterval(min, max) { // min and max included
         return Math.floor(Math.random() * (max - min + 1) + min);
       }
       let angle = 0;
+
+      // selecting text
+      // https://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse
 
       const calculateBackground = () => {
         main.innerHTML = "";
@@ -130,7 +172,9 @@
           const randomNumber = 0.8 * Math.random()
           elemDiv.style.fontSize = String(randomNumber) + "rem";
           elemDiv.style.transform = `rotate(${angle + (i * 1.2)}deg)`
-          elemDiv.textContent = juliusText;
+          // elemDiv.style.color = "red"
+          // elemDiv.textContent = juliusText;
+          elemDiv.textContent = createSentence();
 
           main.appendChild(elemDiv);
         }
@@ -138,27 +182,12 @@
 
       calculateBackground()
       name.textContent = "Julius Reade"
-      top_description.textContent = "Software Engineer. Music Producer. Melbourne, Australia."
+      top_description.textContent = "Senior Software Engineer. Melbourne, Australia."
       name_description.textContent = "It seems like we're in quite the predicament. Oh, well."
 
-      // const mediaQuery = window.matchMedia('(min-width: 500px)');
-
-      // const mediaListener = (event) => {
-      //   if (event.matches) {
-      //     document.addEventListener("mousemove", (event) => {
-      //       calculateBackground()
-      //     });
-      //   } else {
-          // this code is super crap because once you go to mobile view and then come back the set interval time will keep going.
-          // but it really shouldn't be an issue in most cases
-          window.setInterval(() => {
-            calculateBackground()
-          }, "200")
-      //   }
-      // }
-
-      // mediaQuery.addListener(mediaListener)
-      // mediaListener(mediaQuery)
+      window.setInterval(() => {
+        calculateBackground()
+      }, "200")
     </script>
   </body>
 </html>
