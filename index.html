@@ -183,7 +183,16 @@
       calculateBackground()
       name.textContent = "Julius Reade"
       top_description.textContent = "Senior Software Engineer. Melbourne, Australia."
-      name_description.textContent = "It seems like we're in quite the predicament. Oh, well."
+
+      const descriptionArray = [
+        "It seems like we're in quite the predicament!",
+        "Oh dear, the internet broke again.",
+        // "I like digital candy.",
+        "I knew I should have become an accountant.",
+        // "I think you need to get your eyes checked.",
+      ]
+
+      name_description.textContent = descriptionArray[Math.floor(Math.random()*descriptionArray.length)];
 
       window.setInterval(() => {
         calculateBackground()
