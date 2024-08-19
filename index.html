@@ -107,11 +107,11 @@
       const name_description = document.querySelector(".name_description")
       const top_description = document.querySelector(".top_description")
 
-      let calculateBackground = () => {
+      const calculateBackground = () => {
         main.innerHTML = "";
         for (let i = 0; i < 500; i++) {
-          let elemDiv = document.createElement('div');
-          let randomNumber = 0.8 * Math.random()
+          const elemDiv = document.createElement('div');
+          const randomNumber = 0.8 * Math.random()
           elemDiv.style.fontSize = String(randomNumber) + "rem";
           elemDiv.textContent = websiteText;
           main.appendChild(elemDiv);
@@ -123,10 +123,24 @@
       top_description.textContent = "Software Engineer. Music Producer. Melbourne, Australia."
       name_description.textContent = "We seem to be in quite the predicament here. Oh, well."
 
-      document.addEventListener("mousemove", (event) => {
-        calculateBackground()
-      });
+      const mediaQuery = window.matchMedia('(min-width: 500px)');
 
+      const mediaListener = (event) => {
+        if (event.matches) {
+          document.addEventListener("mousemove", (event) => {
+            calculateBackground()
+          });
+        } else {
+          // this code is super crap because once you go to mobile view and then come back the set interval time will keep going.
+          // but it really shouldn't be an issue in most cases
+          window.setInterval(() => {
+            calculateBackground()
+          }, "200")
+        }
+      }
+
+      mediaQuery.addListener(mediaListener)
+      mediaListener(mediaQuery)
     </script>
   </body>
 </html>
