@@ -181,16 +181,30 @@
         for (let i = 0; i < sentenceLength; i++) {
           var item = wordsArray[Math.floor(Math.random()*wordsArray.length)];
           words += (item + " ");
-
-          // just some random optimisations to get it to run a little better
-          // if (fontSize > 0.6 && words.length > 400) {
-          //   return words;
-          // }
-          // if (calculatedAngle > 60 && words.length > 300) {
-          //   return words
-          // }
         }
-        return words;
+
+          // just some optimisations to get it to run a little better
+        if (window.innerWidth > 2000) {
+          if (fontSize < 0.4) {
+            return words + " " + words + " " + words + " " + words + " " + words + " " + words + " " + words;
+          } else {
+            return words + " " + words + " " + words;
+          }
+        }
+
+        if (window.innerWidth > 1000) {
+          if (fontSize < 0.4) {
+            return words + " " + words + " " + words;
+          } else {
+            return words + " " + words;
+          }
+        }
+
+        if (fontSize < 0.4) {
+            return words + " " + words;
+          } else {
+            return words;
+          }
       }
 
       const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
@@ -212,7 +226,7 @@
 
           // for julius use 250
           // for code use 30?
-          elemDiv.textContent = createSentence(30, fontSizeNumber, calculatedAngle);
+          elemDiv.textContent = createSentence(10, fontSizeNumber, calculatedAngle);
 
           main.appendChild(elemDiv);
         }
